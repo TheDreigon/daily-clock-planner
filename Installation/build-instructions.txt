@@ -1,0 +1,202 @@
+================================
+DAILY CLOCK PLANNER - DEVELOPER BUILD INSTRUCTIONS
+================================
+
+This guide is for developers who want to build the application from source.
+Regular users should use the pre-built installer instead (see README.txt).
+
+
+PREREQUISITES
+-------------
+• Node.js (LTS version recommended): https://nodejs.org/
+• Windows 10 or later (for Windows builds)
+• Administrator privileges (required for building on Windows)
+
+
+PROJECT STRUCTURE
+-----------------
+DailyClockPlanner/
+├── Daily Clock Planner.lnk    (created after build)
+├── Installation/
+│   ├── main.js                (Electron main process)
+│   ├── index.html             (Application UI)
+│   ├── package.json           (Dependencies & build config)
+│   ├── package-lock.json      (Auto-generated)
+│   ├── create-shortcut.js     (Post-build script)
+│   ├── node_modules/          (Created by npm install)
+│   └── dist/                  (Build output)
+└── Saves/                     (Auto-created by app)
+
+
+STEP 1: INSTALL NODE.JS
+-----------------------
+1. Download from: https://nodejs.org/
+2. Install with default settings
+3. Verify installation:
+   node --version
+   npm --version
+
+
+STEP 2: SETUP PROJECT
+---------------------
+1. Create folder structure as shown above
+2. Place these files in Installation/:
+   - package.json
+   - main.js
+   - index.html
+   - create-shortcut.js
+
+
+STEP 3: INSTALL DEPENDENCIES
+----------------------------
+Open Command Prompt in Installation/ folder:
+
+npm install
+
+This downloads Electron and Electron Builder (~300-400 MB)
+
+
+STEP 4: TEST THE APP
+--------------------
+Before building, test that everything works:
+
+npm start
+
+The app should launch in a window. Test all features.
+
+
+STEP 5: BUILD EXECUTABLE
+------------------------
+IMPORTANT: Must run as Administrator on Windows!
+
+1. Close any running instances of the app
+2. Open Command Prompt as Administrator
+3. Navigate to Installation/ folder
+4. Run build command:
+
+   For Windows:
+   npm run build-win
+
+   For Mac:
+   npm run build-mac
+
+   For Linux:
+   npm run build-linux
+
+5. Wait 5-10 minutes for build to complete
+
+
+STEP 6: LOCATE BUILD OUTPUT
+---------------------------
+After successful build:
+
+• Installer: Installation/dist/Daily Clock Planner Setup 1.0.0.exe
+• Portable: Installation/dist/win-unpacked/Daily Clock Planner.exe
+• Shortcut: DailyClockPlanner/Daily Clock Planner.lnk (auto-created)
+
+
+STEP 7: DISTRIBUTE
+------------------
+To share with users, distribute:
+• Daily Clock Planner Setup 1.0.0.exe (installer)
+
+Users just run the installer - no Node.js or npm needed!
+
+
+UPDATING THE APP
+----------------
+After code changes:
+
+1. Update the relevant files (main.js, index.html, etc.)
+2. Test with: npm start
+3. Rebuild: npm run build-win (as Administrator)
+4. New installer will be in dist/ folder
+
+
+TROUBLESHOOTING
+---------------
+Problem: "npm not found"
+Solution: Reinstall Node.js, restart terminal
+
+Problem: Build fails with permission errors
+Solution: Run Command Prompt as Administrator
+
+Problem: "Cannot create symbolic link"
+Solution: Enable Developer Mode in Windows Settings
+          OR run as Administrator
+
+Problem: Build succeeds but app won't start
+Solution: Delete node_modules and dist folders
+          Run: npm install
+          Then: npm run build-win
+
+Problem: Changes not appearing in built app
+Solution: Make sure you're editing files in Installation/
+          Rebuild after every code change
+
+
+BUILD CONFIGURATION
+-------------------
+Edit package.json to customize:
+
+• Application name: "productName" field
+• Version number: "version" field
+• Icon: Add icon.ico and configure in "build" section
+• Output directory: "directories.output" field
+
+
+DEPENDENCIES
+------------
+• Electron: Cross-platform desktop app framework
+• Electron Builder: Creates installers and packages
+• Node.js: JavaScript runtime for build tools
+
+
+FILE SIZES
+----------
+• Development files: ~400 MB (includes node_modules)
+• Built installer: ~150-200 MB
+• Installed app: ~200 MB
+
+
+NOTES FOR DEVELOPERS
+--------------------
+• The app uses localStorage for persistence
+• Backups are saved to "Saves" folder next to executable
+• No external APIs or internet connection required
+• Built with vanilla JavaScript (no frameworks)
+• Uses Electron's IPC for file dialogs
+• Post-build script automatically creates desktop shortcut
+
+
+MODIFYING THE APP
+-----------------
+Key files to edit:
+
+• index.html - UI, styling, and client-side logic
+• main.js - Electron main process, file operations
+• package.json - App metadata and build configuration
+
+After changes, always:
+1. Test with npm start
+2. Rebuild with npm run build-win
+3. Test the installer
+
+
+VERSION CONTROL
+---------------
+Recommended .gitignore entries:
+node_modules/
+dist/
+*.log
+package-lock.json (optional)
+
+
+CREATING RELEASES
+-----------------
+1. Update version in package.json
+2. Test thoroughly with npm start
+3. Build: npm run build-win
+4. Test installer on clean system
+5. Tag release in version control
+6. Distribute Setup.exe file
