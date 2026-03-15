@@ -17,7 +17,7 @@ A visual 24-hour clock application for planning and managing your daily schedule
 
 ## Screenshot
 
-![Daily Clock Planner Screenshot](daily clock planner - screenshot.png)
+![Daily Clock Planner Screenshot](screenshot.png)
 
 ## Installation
 
