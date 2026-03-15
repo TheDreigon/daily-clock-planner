@@ -17,22 +17,7 @@ A visual 24-hour clock application for planning and managing your daily schedule
 
 ## Screenshot
 
-```
-    ┌─────────────────────────────────────┐
-    │           0                         │
-    │      23       1                     │
-    │    22           2                   │
-    │   21     ████     3                 │
-    │  20    ████████    4                │
-    │  19   ██████████   5                │
-    │  18  ────●         6                │
-    │   17               7                │
-    │    16             8                 │
-    │      15         9                   │
-    │        14    10                     │
-    │           12                        │
-    └─────────────────────────────────────┘
-```
+![Daily Clock Planner Screenshot](daily clock planner - screenshot.png)
 
 ## Installation
 
