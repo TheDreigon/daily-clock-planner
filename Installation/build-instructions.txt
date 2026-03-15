@@ -3,7 +3,7 @@ DAILY CLOCK PLANNER - DEVELOPER BUILD INSTRUCTIONS
 ================================
 
 This guide is for developers who want to build the application from source.
-Regular users should use the pre-built installer instead (see README.txt).
+Regular users should use the pre-built installer instead (see README.md).
 
 
 PREREQUISITES
